@@ -26,7 +26,7 @@
             text-decoration: underline;
         }
 
-        .source {
+        .source, .source2 {
             width: 350px;
             margin: 0 auto;
             border: 1px solid #e0e0e0;
@@ -36,6 +36,10 @@
             -webkit-border-radius: 3px;
                -moz-border-radius: 3px;
                     border-radius: 3px;
+        }
+
+        .source2 {
+            width: 450px;
         }
 
         .example1 {
@@ -82,8 +86,47 @@
             -webkit-border-radius: 6px;
                -moz-border-radius: 6px;
                     border-radius: 6px;
+            -webkit-box-shadow: rgba(87, 169, 185, 0.9) 0px 3px 0px 0px, transparent 0 0 0;
+               -moz-box-shadow: rgba(87, 169, 185, 0.9) 0px 3px 0px 0px, transparent 0 0 0;
+                    box-shadow: rgba(87, 169, 185, 0.9) 0px 3px 0px 0px, transparent 0 0 0;
+        }
+
+        .example1 .button:hover {
+            -webkit-box-shadow: rgb(105, 210, 231) 0px 3px 0px 0px, transparent 0 0 0;
+               -moz-box-shadow: rgb(105, 210, 231) 0px 3px 0px 0px, transparent 0 0 0;
+                    box-shadow: rgb(105, 210, 231) 0px 3px 0px 0px, transparent 0 0 0;
+        }
+
+        .example2 {
+            width: 600px;
+            padding: 15px;
+            margin: 50px auto;
+            background: white;
+            -webkit-border-radius: 3px;
+               -moz-border-radius: 3px;
+                    border-radius: 3px;
+        }
+    
+        .example2 .tweet {
+            overflow: hidden;
+        }
+
+        .example2 ul {
+            width: 99999px;
+            height: 100px;
+        }
+
+        .example2 ul li {
+            width: 200px;
+            height: 100px;
+            float: left;
+            border-right: 1px solid #eee;
+            padding: 0 10px 0 0;
+            margin: 0 10px 0 0;
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.twittie.js"></script>
 </head>
 <body>
     <div class="example1">
@@ -91,7 +134,7 @@
         <div class="button"></div>
     </div>
 
-    <script class="source">
+    <script class="source" type="text/javascript">
         $('.example1 .tweet').twittie({
             username: 'sonnyt',
             dateFormat: '%b. %d, %Y',
@@ -100,16 +143,25 @@
         });
     </script>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.twittie.js"></script>
+    <div class="example2">
+        <div class="tweet"></div>
+    </div>
 
-    <script type="text/javascript">
-        $('.example1 .tweet').twittie({
+    <script class="source2" type="text/javascript">
+        $('.example2 .tweet').twittie({
             username: 'sonnyt',
             dateFormat: '%b. %d, %Y',
-            template: '{{tweet}} <div class="date">{{date}}</div>',
-            count: 1
+            template: '<strong class="date">{{date}}</strong> - {{tweet}}',
+            count: 10
         });
+
+        setInterval(function() {
+            var item = $('.example2 .tweet ul').find('li:first');
+
+            item.animate( {marginLeft: '-220px', 'opacity': '0'}, 500, function() {
+                $(this).detach().appendTo('.example2 .tweet ul').removeAttr('style');
+            });
+        }, 5000);
     </script>
 </body>
 </html>
