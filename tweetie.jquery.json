@@ -1,7 +1,7 @@
 {
     "name": "tweetie",
     "version": "1.0",
-    "title:" "Tweetie - Simple Twitter Feed Plugin",
+    "title": "Tweetie - Simple Twitter Feed Plugin",
     "description": "Simple yet powerful plugin to show your Tweets on your site.",
     "keywords": [
         "twitter",
@@ -20,9 +20,6 @@
     "homepage": "http://sonnyt.com/Tweetie",
     "docs": "https://github.com/sonnyt/Tweetie#tweetie",
     "demo": "http://sonnyt.com/Tweetie",
-    "main": [
-        "./jquery.twittie.js"
-    ],
     "dependencies": {
         "jquery": ">=1.9"
     }
