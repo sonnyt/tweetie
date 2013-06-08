@@ -35,12 +35,12 @@
 
                 // Fix hashtag links
                 if (text.indexOf('#') !== -1) {
-                    text = '<a href="' + link + 'search/' + text.replace("#", "%23") + '" target="_blank">' + text + '</a>';
+                    text = '<a href="' + link + 'search/' + text.replace('#', '%23').replace(/[^A-Za-z0-9]/, '') + '" target="_blank">' + text + '</a>';
                 }
 
                 // Fix reply links
                 if (text.indexOf('@') !== -1) {
-                    text = '<a href="' + link + text.replace("@", "").replace(")", "") + '" target="_blank">' + text + '</a>';
+                    text = '<a href="' + link + text.replace('@', '').replace(/[^A-Za-z0-9]/, '') + '" target="_blank">' + text + '</a>';
                 }
 
                 // Fix regular http links
