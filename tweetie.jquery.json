@@ -1,6 +1,6 @@
 {
     "name": "tweetie",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "title": "Tweetie - Simple Twitter Feed Plugin",
     "description": "Simple yet powerful plugin to show your Tweets on your site.",
     "keywords": [
@@ -17,10 +17,10 @@
             "url": "http://ionden.com/a/licence-en.html"
         }
     ],
-    "homepage": "http://sonnyt.com/Tweetie",
+    "homepage": "http://sonnyt.com/tweetie-plugin/",
     "docs": "https://github.com/sonnyt/Tweetie#tweetie",
     "demo": "http://sonnyt.com/Tweetie",
     "dependencies": {
-        "jquery": ">=1.9"
+        "jquery": ">=1.7"
     }
 }
