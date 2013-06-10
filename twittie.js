@@ -60,13 +60,15 @@
          * @return {String}          Formatted date
          */
         var dating = function (twt_date) {
-            twt_date = new Date(twt_date);
+            // fix for IE
+            var time = twt_date.split(' ');
+            twt_date = new Date(Date.parse(time[1] + ' ' + time[2] + ', ' + time[5] + ' ' + time[3] + ' UTC'));
 
             var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
             var _date = {
                 '%d': twt_date.getDate(),
-                '%m': twt_date.getMonth(),
+                '%m': twt_date.getMonth()+1,
                 '%b': months[twt_date.getMonth()].substr(0, 3),
                 '%B': months[twt_date.getMonth()],
                 '%y': String(twt_date.getFullYear()).slice(-2),
