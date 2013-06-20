@@ -1,6 +1,6 @@
 <?php
     require_once("twitteroauth/twitteroauth.php"); // Path to twitteroauth library
-    require_once('config_sample.php'); // Path to config file
+    require_once('config.php'); // Path to config file
 
     // Check if keys are in place
     if (CONSUMER_KEY === '' || CONSUMER_SECRET === '' || CONSUMER_KEY === 'CONSUMER_KEY_HERE' || CONSUMER_SECRET === 'CONSUMER_SECRET_HERE') {
