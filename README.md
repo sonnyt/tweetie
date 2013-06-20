@@ -1,7 +1,7 @@
 Tweetie
 =======
 
-jQuery Tweetie - Simple Twitter Feed Plugin.
+jQuery Tweetie - Simple Twitter Feed Plugin that works with new Twitter 1.1 API.
 
 #Features
 
@@ -10,18 +10,41 @@ jQuery Tweetie - Simple Twitter Feed Plugin.
 - Set tweet count
 - Hide replies and only show your own tweets
 
+[Demo](http://sonnyt.com/Tweetie)
+
 #Usage
+New Twitter API requires oAuth Token Key, so it's three step process.
+
+## Step 1
+
+First, you need a consumer key and secret keys. Get one from [dev.twitter.com/apps](https://dev.twitter.com/apps).
+
+## Step 2
+
+Edit `api/config.php` file and replace variables with your Consumer and oAuth Keys.
+
+```PHP
+    // Consumer Key
+    define('CONSUMER_KEY', 'CONSUMER_KEY_HERE');
+    define('CONSUMER_SECRET', 'CONSUMER_SECRET_HERE');
+
+    // User Access Token
+    define('ACCESS_TOKEN', 'ACCESS_TOKEN_HERE');
+    define('ACCESS_SECRET', 'ACCESS_SECRET_HERE');
+```
+
+## Step 3
+
 Initlize just like any other plugin.
 
 ```JS
-$('.tweet').twittie({ username: 'sonnyt' });
+$('.tweet').twittie();
 ```
 
 #Options
 
 Option | Default | Description
 --- | --- | ---
-username | null | Your Twitter username
 count | `10` | Number of tweets you want to display.
 hideReplies | `false` | Set `true` if you want to show "@" replies as well. Or leave it `false` to just to show your tweets and no replies.
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
@@ -35,6 +58,7 @@ Template | Description
 --- | ---
 `{{tweet}}` | Tweet content
 `{{date}}` | Formatted tweet date
+`{{avatar}}` | User's Avatar Image
 
 ## Date Format
 Format | Description

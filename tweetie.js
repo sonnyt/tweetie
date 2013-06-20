@@ -8,17 +8,11 @@
     $.fn.twittie = function (options) {
         // Default settings
         var settings = $.extend({
-            'username': null,
             'count': 10,
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}'
         }, options);
-
-        // Check if username is set
-        if (!settings.username) {
-            $.error('Username is not defined.');
-        }
 
         /**
          * Applies @reply, #hash and http links
@@ -92,7 +86,7 @@
          */
         var templating = function (data) {
             var temp = settings.template;
-            var temp_variables = ['date', 'tweet'];
+            var temp_variables = ['date', 'tweet', 'avatar'];
 
             for (var i = 0, len = temp_variables.length; i < len; i++) {
                 temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), data[temp_variables[i]]);
@@ -104,11 +98,10 @@
         // Set loading
         this.html('<span>Loading...</span>');
 
-        var url = 'https://api.twitter.com/1/statuses/user_timeline.json?callback=?';
         var that = this;
 
         // Fetch tweets
-        $.getJSON(url, { screen_name: settings.username }, function (twt) {
+        $.getJSON('api/tweet.php', { count: settings.count }, function (twt) {
             that.find('span').fadeOut('fast', function () {
                 that.html('<ul></ul>');
 
@@ -121,7 +114,8 @@
                     if (twt[i]) {
                         var temp_data = {
                             date: dating(twt[i].created_at),
-                            tweet: linking(twt[i].text)
+                            tweet: linking(twt[i].text),
+                            avatar: '<img src="'+ twt[i].user.profile_image_url +'" />'
                         };
 
                         that.find('ul').append('<li>' + templating(temp_data) + '</li>');
