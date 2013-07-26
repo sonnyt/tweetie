@@ -12,6 +12,7 @@
     // If count of tweets is not fall back to default setting
     $number = $_GET['count'];
     $exclude_replies = $_GET['exclude_replies'];
+    
     /**
      * Gets connection with user Twitter account
      * @param  String $cons_key     Consumer Key
