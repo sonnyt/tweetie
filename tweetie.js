@@ -101,14 +101,9 @@
         var that = this;
 
         // Fetch tweets
-        $.getJSON('api/tweet.php', { count: settings.count }, function (twt) {
+        $.getJSON('api/tweet.php', { count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
                 that.html('<ul></ul>');
-
-                // If 'hideReplies' is set than filter the result
-                if (settings.hideReplies) {
-                    twt = twt.filter(function (tweet) { return tweet.in_reply_to_screen_name === null; });
-                }
 
                 for (var i = 0; i < settings.count; i++) {
                     if (twt[i]) {

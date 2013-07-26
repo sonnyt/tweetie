@@ -10,6 +10,3 @@
     // User Access Token
     define('ACCESS_TOKEN', 'ACCESS_TOKEN_HERE');
     define('ACCESS_SECRET', 'ACCESS_SECRET_HERE');
-
-    // Default Number of Tweets
-    define('NUMBER_TWEETS', 10);
