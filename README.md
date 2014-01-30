@@ -83,6 +83,7 @@ Template | Description
 `{{date}}` | Formatted tweet date
 `{{avatar}}` | User's Avatar Image
 `{{url}}` | Direct URL to the tweet
+`{{retweeted}}` | Returns `true` or `false` if tweet is retweeted
 
 ## Date Format
 Format | Description
