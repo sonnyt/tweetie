@@ -50,6 +50,28 @@ hideReplies | `false` | Set `true` if you want to hide "@" replies as well. Or l
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
 template | `{{date}} - {{tweet}}` | Format how you want to show your tweets. Feel free to add HTML, see [this](#templating) table for more refrence.
 
+## Callback
+
+It's very easy to add `callback` function, for example:
+
+```JS
+$('.tweet').twittie(function() {
+	alert('loaded!');
+});
+```
+
+If you have options are defined, than callback function is placed as a second parameter, for example:
+
+```JS
+$('.tweet').twittie({
+	'count': 1,
+	'hideReplies': true
+}, function() {
+	alert('loaded!');
+});
+```
+
+
 ## Templating
 
 For now only two templating variables are available, more coming soon. You add as much as HTML elementes as you would like.

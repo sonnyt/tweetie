@@ -5,7 +5,10 @@
 
 (function ($) {
 
-    $.fn.twittie = function (options) {
+    $.fn.twittie = function () {
+        var options = (arguments[0] instanceof Object) ? arguments[0] : {},
+            callback = (typeof(arguments[0]) == 'function') ? arguments[0] : arguments[1];
+
         // Default settings
         var settings = $.extend({
             'count': 10,
@@ -118,6 +121,8 @@
                         break;
                     }
                 }
+
+                if (typeof(callback) == 'function') callback();
             });
         });
     };
