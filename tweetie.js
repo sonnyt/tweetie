@@ -21,32 +21,13 @@
          * Applies @reply, #hash and http links
          * @param  {String} tweet A single tweet
          * @return {String}       Fixed tweet
+         *
+         * Thanks to @Wachem enhanced linking.
          */
         var linking = function (tweet) {
-            var parts = tweet.split(' ');
-            var twit = '';
-
-            for (var i = 0, len = parts.length; i < len; i++) {
-                var text = parts[i];
-                var link = "https://twitter.com/#!/";
-
-                // Fix hashtag links
-                if (text.indexOf('#') !== -1) {
-                    text = '<a href="' + link + 'search/' + text.replace('#', '%23').replace(/[^A-Za-z0-9]/, '') + '" target="_blank">' + text + '</a>';
-                }
-
-                // Fix reply links
-                if (text.indexOf('@') !== -1) {
-                    text = '<a href="' + link + text.replace('@', '').replace(/[^A-Za-z0-9]/, '') + '" target="_blank">' + text + '</a>';
-                }
-
-                // Fix regular http links
-                if (text.indexOf('http://') !== -1) {
-                    text = '<a href="' + text + '" target="_blank">' + text + '</a>';
-                }
-
-                twit += text + ' ';
-            }
+            var twit = tweet.replace(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig,'<a href="$1" target="_blank" title="Visit this link">$1</a>')
+                 .replace(/#([a-zA-Z0-9]+)/g,'<a href="http://twitter.com/search?q=%23$1&amp;src=hash" target="_blank" title="Search for #$1">#$1</a>')
+                 .replace(/@([a-zA-Z0-9]+)/g,'<a href="http://twitter.com/$1" target="_blank" title="$1 on Twitter">@$1</a>');
 
             return twit;
         };
