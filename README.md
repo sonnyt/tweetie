@@ -82,6 +82,7 @@ Template | Description
 `{{tweet}}` | Tweet content
 `{{date}}` | Formatted tweet date
 `{{avatar}}` | User's Avatar Image
+`{{url}}` | Direct URL to the tweet
 
 ## Date Format
 Format | Description
