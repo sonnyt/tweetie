@@ -10,6 +10,7 @@
     }
 
     // If count of tweets is not fall back to default setting
+    $username = $_GET['username'];
     $number = $_GET['count'];
     $exclude_replies = $_GET['exclude_replies'];
     
@@ -31,7 +32,9 @@
     $connection = getConnectionWithToken(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET);
     
     // Get Tweets
-    $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?count=".$number."&exclude_replies=".$exclude_replies);
+    $screenname = (isset($username)) ? '&screen_name='.$username : '';
+
+    $tweets = $connection->get('https://api.twitter.com/1.1/statuses/user_timeline.json?count='.$number.$screenname.'&exclude_replies='.$exclude_replies);
 
     // Return JSON Object
     header('Content-Type: application/json');

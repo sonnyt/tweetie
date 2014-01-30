@@ -45,6 +45,7 @@ $('.tweet').twittie();
 
 Option | Default | Description
 --- | --- | ---
+username | null | Option to load tweets from another account.
 count | `10` | Number of tweets you want to display.
 hideReplies | `false` | Set `true` if you want to hide "@" replies as well. Or leave it `false` to just to show your tweets and no replies.
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
