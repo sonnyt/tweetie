@@ -61,7 +61,7 @@ $('.tweet').twittie(function() {
 });
 ```
 
-If you have options are defined, than callback function is placed as a second parameter, for example:
+If you have options defined, than callback function is placed as a second parameter, for example:
 
 ```JS
 $('.tweet').twittie({
