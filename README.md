@@ -50,6 +50,7 @@ count | `10` | Number of tweets you want to display.
 hideReplies | `false` | Set `true` if you want to hide "@" replies as well. Or leave it `false` to just to show your tweets and no replies.
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
 template | `{{date}} - {{tweet}}` | Format how you want to show your tweets. Feel free to add HTML, see [this](#templating) table for more refrence.
+apiPath | `/api/tweet.php` | Path to your `tweet.php` file.
 
 ## Callback
 
