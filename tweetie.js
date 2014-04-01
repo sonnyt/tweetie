@@ -95,7 +95,7 @@
                     if (twt[i]) {
                         var temp_data = {
                             date: dating(twt[i].created_at),
-                            tweet: linking(twt[i].text),
+                            tweet: (twt[i].retweeted) ? linking('RT @'+ twt[i].user.screen_name +': '+ twt[i].retweeted_status.text) : linking(twt[i].text),
                             avatar: '<img src="'+ twt[i].user.profile_image_url +'" />',
                             url: 'http://twitter.com/' + twt[i].user.screen_name + '/status/' + twt[i].id_str,
                             retweeted: twt[i].retweeted
