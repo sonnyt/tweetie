@@ -4,10 +4,11 @@
  */
 
 (function ($) {
+    'use strict';
 
     $.fn.twittie = function () {
         var options = (arguments[0] instanceof Object) ? arguments[0] : {},
-            callback = (typeof(arguments[0]) == 'function') ? arguments[0] : arguments[1];
+            callback = (typeof arguments[0] === 'function') ? arguments[0] : arguments[1];
 
         // Default settings
         var settings = $.extend({
@@ -113,7 +114,7 @@
                     }
                 }
 
-                if (typeof(callback) == 'function') callback();
+                if (typeof callback === 'function') { callback(); }
             });
         });
     };
