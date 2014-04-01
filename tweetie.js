@@ -16,7 +16,7 @@
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
-            'apiPath' : '/api/tweet.php'
+            'apiPath' : 'api/tweet.php'
         }, options);
 
         /**
