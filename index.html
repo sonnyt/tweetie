@@ -148,18 +148,20 @@
 
     <script class="source2" type="text/javascript">
         $('.example2 .tweet').twittie({
+            username: 'vincentdignan',
+            list: 'c-oo-l-e-s-t-nerds-i-know',
             dateFormat: '%b. %d, %Y',
-            template: '<strong class="date">{{date}}</strong> - {{tweet}}',
+            template: '<strong class="date">{{date}}</strong> - {{screen_name}} {{tweet}}',
             count: 10
+        }, function () {
+            setInterval(function() {
+                var item = $('.example2 .tweet ul').find('li:first');
+
+                item.animate( {marginLeft: '-220px', 'opacity': '0'}, 500, function() {
+                    $(this).detach().appendTo('.example2 .tweet ul').removeAttr('style');
+                });
+            }, 5000);
         });
-
-        setInterval(function() {
-            var item = $('.example2 .tweet ul').find('li:first');
-
-            item.animate( {marginLeft: '-220px', 'opacity': '0'}, 500, function() {
-                $(this).detach().appendTo('.example2 .tweet ul').removeAttr('style');
-            });
-        }, 5000);
     </script>
 </body>
 </html>

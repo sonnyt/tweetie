@@ -12,12 +12,17 @@
         // Default settings
         var settings = $.extend({
             'username': null,
+            'list': null,
             'count': 10,
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
             'apiPath' : 'api/tweet.php'
         }, options);
+
+        if (settings.list && !settings.username) {
+            $.error('If you want to fetch tweets from a list, you must define the username of the list owner.');
+        }
 
         /**
          * Applies @reply, #hash and http links
@@ -87,7 +92,7 @@
         var that = this;
 
         // Fetch tweets
-        $.getJSON(settings.apiPath, { username: settings.username, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
+        $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
                 that.html('<ul></ul>');
 

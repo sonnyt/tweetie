@@ -13,6 +13,7 @@
     $username = $_GET['username'];
     $number = $_GET['count'];
     $exclude_replies = $_GET['exclude_replies'];
+    $list_slug = $_GET['list'];
     
     /**
      * Gets connection with user Twitter account
@@ -32,9 +33,25 @@
     $connection = getConnectionWithToken(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET);
     
     // Get Tweets
-    $screenname = (isset($username)) ? '&screen_name='.$username : '';
+    if (!empty($list_slug)) {
+      $params = array(
+          'owner_screen_name' => $username,
+          'slug' => $list_slug,
+          'count' => $number
+      );
 
-    $tweets = $connection->get('https://api.twitter.com/1.1/statuses/user_timeline.json?count='.$number.$screenname.'&exclude_replies='.$exclude_replies);
+      $url = '/lists/statuses';
+    } else {
+      $params = array(
+          'count' => $number,
+          'exclude_replies' => $exclude_replies,
+          'screen_name' => $username
+      );
+
+      $url = '/statuses/user_timeline';
+    }
+
+    $tweets = $connection->get($url, $params);
 
     // Return JSON Object
     header('Content-Type: application/json');
