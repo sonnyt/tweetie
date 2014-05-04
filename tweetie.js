@@ -99,10 +99,11 @@
                 that.html('<ul></ul>');
 
                 for (var i = 0; i < settings.count; i++) {
+                    var tweet = false;
                     if(twt[i]) {
-                        var tweet = twt[i];
+                        tweet = twt[i];
                     } else if(twt.statuses !== undefined && twt.statuses[i]) {
-                        var tweet = twt.statuses[i];
+                        tweet = twt.statuses[i];
                     } else {
                         break;
                     }
