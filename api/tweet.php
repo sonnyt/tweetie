@@ -14,6 +14,7 @@
     $number = $_GET['count'];
     $exclude_replies = $_GET['exclude_replies'];
     $list_slug = $_GET['list'];
+    $hashtag = $_GET['hashtag'];
     
     /**
      * Gets connection with user Twitter account
@@ -41,6 +42,13 @@
       );
 
       $url = '/lists/statuses';
+    } else if($hashtag) {
+      $params = array(
+          'count' => $number,
+          'q' => '#'.$hashtag
+      );
+
+      $url = '/search/tweets';
     } else {
       $params = array(
           'count' => $number,
