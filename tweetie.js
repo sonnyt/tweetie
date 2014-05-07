@@ -114,7 +114,7 @@
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
                         url: 'http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
                         retweeted: tweet.retweeted,
-                        screen_name: linking('@'+ tweet.user.screen_name),
+                        screen_name: linking('@'+ tweet.user.screen_name)
                     };
 
                     that.find('ul').append('<li>' + templating(temp_data) + '</li>');
