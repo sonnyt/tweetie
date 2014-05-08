@@ -14,6 +14,7 @@
         var settings = $.extend({
             'username': null,
             'list': null,
+            'hashtag': null,
             'count': 10,
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
@@ -93,25 +94,30 @@
         var that = this;
 
         // Fetch tweets
-        $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
+        $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, hashtag: settings.hashtag, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
                 that.html('<ul></ul>');
 
                 for (var i = 0; i < settings.count; i++) {
-                    if (twt[i]) {
-                        var temp_data = {
-                            date: dating(twt[i].created_at),
-                            tweet: (twt[i].retweeted) ? linking('RT @'+ twt[i].user.screen_name +': '+ twt[i].retweeted_status.text) : linking(twt[i].text),
-                            avatar: '<img src="'+ twt[i].user.profile_image_url +'" />',
-                            url: 'http://twitter.com/' + twt[i].user.screen_name + '/status/' + twt[i].id_str,
-                            retweeted: twt[i].retweeted,
-                            screen_name: linking('@'+ twt[i].user.screen_name),
-                        };
-
-                        that.find('ul').append('<li>' + templating(temp_data) + '</li>');
+                    var tweet = false;
+                    if(twt[i]) {
+                        tweet = twt[i];
+                    } else if(twt.statuses !== undefined && twt.statuses[i]) {
+                        tweet = twt.statuses[i];
                     } else {
                         break;
                     }
+
+                    var temp_data = {
+                        date: dating(tweet.created_at),
+                        tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
+                        avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
+                        url: 'http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
+                        retweeted: tweet.retweeted,
+                        screen_name: linking('@'+ tweet.user.screen_name)
+                    };
+
+                    that.find('ul').append('<li>' + templating(temp_data) + '</li>');
                 }
 
                 if (typeof callback === 'function') { callback(); }

@@ -10,10 +10,11 @@
     }
 
     // If count of tweets is not fall back to default setting
-    $username = $_GET['username'];
-    $number = $_GET['count'];
-    $exclude_replies = $_GET['exclude_replies'];
-    $list_slug = $_GET['list'];
+    $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+    $number = filter_input(INPUT_GET, 'count', FILTER_SANITIZE_NUMBER_INT);
+    $exclude_replies = filter_input(INPUT_GET, 'exclude_replies', FILTER_SANITIZE_SPECIAL_CHARS);
+    $list_slug = filter_input(INPUT_GET, 'list_slug', FILTER_SANITIZE_SPECIAL_CHARS);
+    $hashtag = filter_input(INPUT_GET, 'hashtag', FILTER_SANITIZE_SPECIAL_CHARS);
     
     /**
      * Gets connection with user Twitter account
@@ -23,10 +24,11 @@
      * @param  String $oauth_secret Access Secrete Token
      * @return Object               Twitter Session
      */
-    function getConnectionWithToken($cons_key, $cons_secret, $oauth_token, $oauth_secret) {
-      $connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_secret);
+    function getConnectionWithToken($cons_key, $cons_secret, $oauth_token, $oauth_secret)
+    {
+        $connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_secret);
       
-      return $connection;
+        return $connection;
     }
     
     // Connect
@@ -41,6 +43,13 @@
       );
 
       $url = '/lists/statuses';
+    } else if($hashtag) {
+      $params = array(
+          'count' => $number,
+          'q' => '#'.$hashtag
+      );
+
+      $url = '/search/tweets';
     } else {
       $params = array(
           'count' => $number,
