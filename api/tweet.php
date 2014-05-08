@@ -37,7 +37,7 @@
       $params = array(
           'owner_screen_name' => $username,
           'slug' => $list_slug,
-          'count' => $number
+          'per_page' => $number
       );
 
       $url = '/lists/statuses';
