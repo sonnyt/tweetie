@@ -90,7 +90,8 @@ Template | Description
 `{{avatar}}` | User's Avatar Image
 `{{url}}` | Direct URL to the tweet
 `{{retweeted}}` | Returns `true` or `false` if tweet is retweeted
-`{{screen_name}}` | Username of person who posted the tweet
+`{{screen_name}}` | Screen name of person who posted the tweet
+`{{user_name}}` | Username of person who posted the tweet
 
 ## Date Format
 Format | Description
