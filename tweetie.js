@@ -19,7 +19,9 @@
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
-            'apiPath' : 'api/tweet.php'
+            'apiPath' : 'api/tweet.php',
+            'ulClass' : 'tweeties',
+            'liClass' : 'tweetie'
         }, options);
 
         if (settings.list && !settings.username) {
@@ -79,7 +81,7 @@
          */
         var templating = function (data) {
             var temp = settings.template;
-            var temp_variables = ['date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name'];
+            var temp_variables = ['date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name', 'user_name'];
 
             for (var i = 0, len = temp_variables.length; i < len; i++) {
                 temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), data[temp_variables[i]]);
@@ -96,7 +98,7 @@
         // Fetch tweets
         $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, hashtag: settings.hashtag, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
-                that.html('<ul></ul>');
+                that.html('<ul class="' + settings.ulClass + '"></ul>');
 
                 for (var i = 0; i < settings.count; i++) {
                     var tweet = false;
@@ -109,6 +111,7 @@
                     }
 
                     var temp_data = {
+                        user_name: tweet.user.name,
                         date: dating(tweet.created_at),
                         tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
@@ -117,7 +120,7 @@
                         screen_name: linking('@'+ tweet.user.screen_name)
                     };
 
-                    that.find('ul').append('<li>' + templating(temp_data) + '</li>');
+                    that.find('ul').append('<li class="'+ settings.liClass +'">' + templating(temp_data) + '</li>');
                 }
 
                 if (typeof callback === 'function') { callback(); }
