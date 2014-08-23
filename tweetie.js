@@ -35,8 +35,8 @@
          */
         var linking = function (tweet) {
             var twit = tweet.replace(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig,'<a href="$1" target="_blank" title="Visit this link">$1</a>')
-                 .replace(/#([a-zA-Z0-9_]+)/g,'<a href="http://twitter.com/search?q=%23$1&amp;src=hash" target="_blank" title="Search for #$1">#$1</a>')
-                 .replace(/@([a-zA-Z0-9_]+)/g,'<a href="http://twitter.com/$1" target="_blank" title="$1 on Twitter">@$1</a>');
+                 .replace(/#([a-zA-Z0-9_]+)/g,'<a href="https://twitter.com/search?q=%23$1&amp;src=hash" target="_blank" title="Search for #$1">#$1</a>')
+                 .replace(/@([a-zA-Z0-9_]+)/g,'<a href="https://twitter.com/$1" target="_blank" title="$1 on Twitter">@$1</a>');
 
             return twit;
         };
@@ -113,7 +113,7 @@
                         date: dating(tweet.created_at),
                         tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
-                        url: 'http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
+                        url: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
                         retweeted: tweet.retweeted,
                         screen_name: linking('@'+ tweet.user.screen_name)
                     };
