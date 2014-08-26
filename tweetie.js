@@ -19,7 +19,8 @@
             'hideReplies': false,
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
-            'apiPath' : 'api/tweet.php'
+            'apiPath' : 'api/tweet.php',
+            'loadingText': 'Loading...'
         }, options);
 
         if (settings.list && !settings.username) {
@@ -89,7 +90,7 @@
         };
 
         // Set loading
-        this.html('<span>Loading...</span>');
+       	this.html('<span>'+settings.loadingText+'</span>');
 
         var that = this;
 
