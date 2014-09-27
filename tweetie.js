@@ -79,10 +79,15 @@
          */
         var templating = function (data) {
             var temp = settings.template;
-            var temp_variables = ['date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name', 'user_name'];
+            var temp_variables = ['date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name', 'user_name', 'image'];
 
             for (var i = 0, len = temp_variables.length; i < len; i++) {
-                temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), data[temp_variables[i]]);
+                if(data[temp_variables[i]]){
+                    temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), data[temp_variables[i]]);
+                } else {
+                    temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), '');
+                }
+                
             }
 
             return temp;
@@ -115,9 +120,10 @@
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
                         url: 'http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
                         retweeted: tweet.retweeted,
-                        screen_name: linking('@'+ tweet.user.screen_name)
+                        screen_name: linking('@'+ tweet.user.screen_name),
+                        image: (tweet.entities.media) ? "<img src='" + tweet.entities.media[0].media_url + "' />" : false
                     };
-
+                    
                     that.find('ul').append('<li>' + templating(temp_data) + '</li>');
                 }
 
