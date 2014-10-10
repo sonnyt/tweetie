@@ -16,6 +16,29 @@
     $list_slug = filter_input(INPUT_GET, 'list_slug', FILTER_SANITIZE_SPECIAL_CHARS);
     $hashtag = filter_input(INPUT_GET, 'hashtag', FILTER_SANITIZE_SPECIAL_CHARS);
     
+	if(CACHE_ENABLED) {
+        // Generate cache key from query data
+        $cache_key = md5(
+            var_export(array($username, $number, $exclude_replies, $list_slug, $hashtag), true) . HASH_SALT
+        );
+    
+        // Remove old files from cache dir
+        $cache_path  = dirname(__FILE__) . '/cache/';
+        foreach (glob($cache_path . '*') as $file) {
+            if (filemtime($file) < time() - CACHE_LIFETIME) {
+                unlink($file);
+            }
+        }
+    
+        // If cache file exists - return it
+        if(file_exists($cache_path . $cache_key)) {
+            header('Content-Type: application/json');
+    
+            echo file_get_contents($cache_path . $cache_key);
+            exit;
+        }
+    }
+	
     /**
      * Gets connection with user Twitter account
      * @param  String $cons_key     Consumer Key
@@ -65,4 +88,6 @@
     // Return JSON Object
     header('Content-Type: application/json');
 
-    echo json_encode($tweets);
+    $tweets = json_encode($tweets);
+    if(CACHE_ENABLED) file_put_contents($cache_path . $cache_key, $tweets);
+    echo $tweets;
