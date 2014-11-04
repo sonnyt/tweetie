@@ -12,6 +12,6 @@
     define('ACCESS_SECRET', 'ACCESS_SECRET_HERE');
 	
 	// Cache Settings
-	define('CACHE_ENABLED', true);
+	define('CACHE_ENABLED', false);
 	define('CACHE_LIFETIME', 3600); // in seconds
 	define('HASH_SALT', md5(dirname(__FILE__)));
