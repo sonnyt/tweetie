@@ -20,7 +20,9 @@
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
             'apiPath' : 'api/tweet.php',
-            'loadingText': 'Loading...'
+            'loadingText': 'Loading...',
+            'ulClass' : 'tweeties',
+            'liClass' : 'tweetie'
         }, options);
 
         if (settings.list && !settings.username) {
@@ -97,7 +99,7 @@
         // Fetch tweets
         $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, hashtag: settings.hashtag, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
-                that.html('<ul></ul>');
+                that.html('<ul class="' + settings.ulClass + '"></ul>');
 
                 for (var i = 0; i < settings.count; i++) {
                     var tweet = false;
@@ -119,7 +121,7 @@
                         screen_name: linking('@'+ tweet.user.screen_name)
                     };
 
-                    that.find('ul').append('<li>' + templating(temp_data) + '</li>');
+                    that.find('ul').append('<li class="'+ settings.liClass +'">' + templating(temp_data) + '</li>');
                 }
 
                 if (typeof callback === 'function') { callback(); }
