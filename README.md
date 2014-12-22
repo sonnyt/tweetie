@@ -54,6 +54,8 @@ hideReplies | `false` | Set `true` if you want to hide "@" replies as well. Or l
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
 template | `{{date}} - {{tweet}}` | Format how you want to show your tweets. Feel free to add HTML, see [this](#templating) table for more refrence.
 apiPath | `/api/tweet.php` | Path to your `tweet.php` file.
+ulClass | `className` | Custom CSS class for the UL element containing the tweets
+liClass | `className` | Custom CSS class for each LI element that holds a tweet 
 
 If you want to fetch tweets from specific Twitter list, you must define the list name in the `list` option and `username` of the list owner.
 
