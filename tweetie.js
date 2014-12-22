@@ -20,8 +20,7 @@
             'dateFormat': '%b/%d/%Y',
             'template': '{{date}} - {{tweet}}',
             'apiPath' : 'api/tweet.php',
-            'ulClass' : 'tweeties',
-            'liClass' : 'tweetie'
+            'loadingText': 'Loading...'
         }, options);
 
         if (settings.list && !settings.username) {
@@ -37,8 +36,8 @@
          */
         var linking = function (tweet) {
             var twit = tweet.replace(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig,'<a href="$1" target="_blank" title="Visit this link">$1</a>')
-                 .replace(/#([a-zA-Z0-9_]+)/g,'<a href="http://twitter.com/search?q=%23$1&amp;src=hash" target="_blank" title="Search for #$1">#$1</a>')
-                 .replace(/@([a-zA-Z0-9_]+)/g,'<a href="http://twitter.com/$1" target="_blank" title="$1 on Twitter">@$1</a>');
+                 .replace(/#([a-zA-Z0-9_]+)/g,'<a href="https://twitter.com/search?q=%23$1&amp;src=hash" target="_blank" title="Search for #$1">#$1</a>')
+                 .replace(/@([a-zA-Z0-9_]+)/g,'<a href="https://twitter.com/$1" target="_blank" title="$1 on Twitter">@$1</a>');
 
             return twit;
         };
@@ -91,14 +90,14 @@
         };
 
         // Set loading
-        this.html('<span>Loading...</span>');
+       	this.html('<span>'+settings.loadingText+'</span>');
 
         var that = this;
 
         // Fetch tweets
-        $.getJSON(settings.apiPath, { username: settings.username, list_slug: settings.list, hashtag: settings.hashtag, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
+        $.getJSON(settings.apiPath, { username: settings.username, list: settings.list, hashtag: settings.hashtag, count: settings.count, exclude_replies: settings.hideReplies }, function (twt) {
             that.find('span').fadeOut('fast', function () {
-                that.html('<ul class="' + settings.ulClass + '"></ul>');
+                that.html('<ul></ul>');
 
                 for (var i = 0; i < settings.count; i++) {
                     var tweet = false;
@@ -115,12 +114,12 @@
                         date: dating(tweet.created_at),
                         tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
-                        url: 'http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
+                        url: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
                         retweeted: tweet.retweeted,
                         screen_name: linking('@'+ tweet.user.screen_name)
                     };
 
-                    that.find('ul').append('<li class="'+ settings.liClass +'">' + templating(temp_data) + '</li>');
+                    that.find('ul').append('<li>' + templating(temp_data) + '</li>');
                 }
 
                 if (typeof callback === 'function') { callback(); }
