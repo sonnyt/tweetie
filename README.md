@@ -81,7 +81,7 @@ $('.tweet').twittie({
 
 ## Templating
 
-For now only two templating variables are available, more coming soon. You add as much as HTML elementes as you would like.
+You can add as many HTML elements as you like. 
 
 Template | Description
 --- | ---
@@ -92,6 +92,7 @@ Template | Description
 `{{retweeted}}` | Returns `true` or `false` if tweet is retweeted
 `{{screen_name}}` | Screen name of person who posted the tweet
 `{{user_name}}` | Username of person who posted the tweet
+`{{image}}` | Embedded image within the post
 
 ## Date Format
 Format | Description
