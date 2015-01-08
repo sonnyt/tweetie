@@ -4,7 +4,7 @@
 
     // Check if keys are in place
     if (CONSUMER_KEY === '' || CONSUMER_SECRET === '' || CONSUMER_KEY === 'CONSUMER_KEY_HERE' || CONSUMER_SECRET === 'CONSUMER_SECRET_HERE') {
-        echo 'You need a consumer key and secret keys. Get one from <a href="https://dev.twitter.com/apps">dev.twitter.com/apps</a>';
+        echo 'You need a consumer key and secret keys. Get one from <a href="https://apps.twitter.com/">apps.twitter.com</a>';
       
         exit;
     }
