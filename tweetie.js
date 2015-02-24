@@ -71,7 +71,6 @@
             for (var i = 0, len = format.length; i < len; i++) {
                 date = date.replace(format[i], _date[format[i]]);
             }
-
             return date;
         };
 
