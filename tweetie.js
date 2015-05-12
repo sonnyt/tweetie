@@ -123,7 +123,7 @@
                     that.find('ul').append('<li class="'+ settings.liClass +'">' + templating(temp_data) + '</li>');
                 }
 
-                if (typeof callback === 'function') { callback(); }
+                if (typeof callback === 'function') { callback(twt); }
             });
         });
     };
