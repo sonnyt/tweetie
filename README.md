@@ -18,7 +18,7 @@ New Twitter API requires oAuth Token Key, so it's three step process.
 
 ## Step 1
 
-First, you need a consumer key and secret keys. Get one from [dev.twitter.com/apps](https://dev.twitter.com/apps).
+First, you need consumer and consumer secret keys. Get them from [dev.twitter.com/apps](https://dev.twitter.com/apps).
 
 ## Step 2
 
@@ -55,7 +55,7 @@ dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table f
 template | `{{date}} - {{tweet}}` | Format how you want to show your tweets. Feel free to add HTML, see [this](#templating) table for more refrence.
 apiPath | `/api/tweet.php` | Path to your `tweet.php` file.
 
-If you want to fetch tweets from specific Twitter list, you must define the list name in the `list` option and `username` of the list owner.
+If you want to fetch tweets from a specific Twitter list, you must define the list name in the `list` option and `username` of the list owner.
 
 ## Callback
 
@@ -81,7 +81,7 @@ $('.tweet').twittie({
 
 ## Templating
 
-For now only two templating variables are available, more coming soon. You add as much as HTML elementes as you would like.
+For now only two templating variables are available, more coming soon. You add as many HTML elements as you would like.
 
 Template | Description
 --- | ---
