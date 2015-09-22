@@ -81,7 +81,7 @@ $('.tweet').twittie({
 
 ## Templating
 
-For now only two templating variables are available, more coming soon. You add as much as HTML elementes as you would like.
+For now only two templating variables are available, more coming soon. You add as much as HTML elements as you would like.
 
 Template | Description
 --- | ---
