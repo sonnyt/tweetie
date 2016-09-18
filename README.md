@@ -3,8 +3,10 @@ Tweetie
 
 jQuery Tweetie - Simple Twitter Feed Plugin that works with new Twitter 1.1 API.
 
+Update: now supports multiple accounts requests!
 #Features
 
+- **New: request tweets from multiple accounts**
 - Easly template tweets using mustache-like `{{date}}` syntax
 - Format tweet timestamp using Linux/Unix `%d/%m/%Y` time formatting syntax
 - Set tweet count
@@ -46,10 +48,11 @@ $('.tweet').twittie();
 
 Option | Default | Description
 --- | --- | ---
-username | null | Option to load tweets from another account or list owner's username.
+username | null | String or array. Option to load tweets from another account, list of accounts or list owner's username.
 list | null | List name to load tweets from. If you define list name you also must define the username of the list owner in the `username` option.
 hashtag | null | Option to load tweets with a specific hashtag.
-count | `10` | Number of tweets you want to display.
+count | `10` | Number of tweets you want to display per account.
+totalCount | `30` | Number of all tweets you want to display.
 hideReplies | `false` | Set `true` if you want to hide "@" replies as well. Or leave it `false` to just to show your tweets and no replies.
 dateFormat | `%b/%d/%Y` | Your date forma, refernce [this](#date-format) table for available formats.
 template | `{{date}} - {{tweet}}` | Format how you want to show your tweets. Feel free to add HTML, see [this](#templating) table for more refrence.
