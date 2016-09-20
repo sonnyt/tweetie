@@ -171,7 +171,7 @@
 						tweets.sort(function (a, b) {
 							var keyA = new Date(a.date),
 								keyB = new Date(b.date);
-							// Compare the 2 dates 
+							// Compare the 2 dates
 							if (keyA < keyB) return -1;
 							if (keyA > keyB) return 1;
 							return 0;
@@ -186,9 +186,9 @@
 			}
 		};
 
-		if (settings.reload === -1)
-			loadTweets();
-		else {
+
+		loadTweets();
+		if (settings.reload !== -1) {
 			setInterval(loadTweets, settings.reload);
 		}
 	};
