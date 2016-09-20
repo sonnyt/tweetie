@@ -17,6 +17,7 @@
 			'hashtag': null,
 			'count': 10,
 			'totalCount': 30,
+			'reload': -1,
 			'hideReplies': false,
 			'dateFormat': '%b/%d/%Y',
 			'template': '{{date}} - {{tweet}}',
@@ -45,12 +46,13 @@
 
 		/**
 		 * Formating a date
-		 * @param  {String} twt_date Twitter date
+		 * @param  {String|Date} twt_date Twitter date
 		 * @return {String}          Formatted date
 		 */
 		var dating = function (twt_date) {
 			// fix for IE
-			twt_date = parseDate(twt_date);
+			if (!(twt_date instanceof Date))
+				twt_date = parseDate(twt_date);
 
 			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -114,7 +116,8 @@
 			that.find('span').fadeOut('fast', function () {
 				that.html('<ul></ul>');
 
-				for (var i = 0; i < totalCount; i++) {
+				for (var i = totalCount - 1; i >= 0; i--) {
+					tweets[i].date = dating(tweets[i].date);
 					that.find('ul').append('<li>' + templating(tweets[i]) + '</li>');
 				}
 
@@ -131,54 +134,62 @@
 		}
 
 
-		var tweets = [];
-		var loaded = 0;
+		var loadTweets = function () {
 
-		for (var x = 0; x < settings.username.length; x++) {
-			requestTweets({username: settings.username[x]}, function (twt) {
+			var tweets = [];
+			var loaded = 0;
 
-				// push tweets into structure
-				for (var i = 0; i < settings.count; i++) {
-					var tweet = false;
-					if (twt[i]) {
-						tweet = twt[i];
-					} else if (twt.statuses !== undefined && twt.statuses[i]) {
-						tweet = twt.statuses[i];
-					} else {
-						break;
+			for (var x = 0; x < settings.username.length; x++) {
+				requestTweets({username: settings.username[x]}, function (twt) {
+
+					// push tweets into structure
+					for (var i = 0; i < settings.count; i++) {
+						var tweet = false;
+						if (twt[i]) {
+							tweet = twt[i];
+						} else if (twt.statuses !== undefined && twt.statuses[i]) {
+							tweet = twt.statuses[i];
+						} else {
+							break;
+						}
+						tweets.push({
+							user_name: tweet.user.name,
+							date: parseDate(tweet.created_at),
+							tweet: (tweet.retweeted) ? linking('RT @' + tweet.user.screen_name + ': ' + tweet.retweeted_status.text) : linking(tweet.text),
+							avatar: '<img src="' + tweet.user.profile_image_url + '" />',
+							url: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
+							retweeted: tweet.retweeted,
+							screen_name: linking('@' + tweet.user.screen_name)
+						});
 					}
-					tweets.push({
-						user_name: tweet.user.name,
-						date: parseDate(tweet.created_at),
-						tweet: (tweet.retweeted) ? linking('RT @' + tweet.user.screen_name + ': ' + tweet.retweeted_status.text) : linking(tweet.text),
-						avatar: '<img src="' + tweet.user.profile_image_url + '" />',
-						url: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
-						retweeted: tweet.retweeted,
-						screen_name: linking('@' + tweet.user.screen_name)
-					});
-				}
-				loaded++;
+					loaded++;
 
-				// on last request
-				if (loaded == settings.username.length) {
+					// on last request
+					if (loaded == settings.username.length) {
 
-					// sort array by date
-					tweets.sort(function (a, b) {
-						var keyA = new Date(a.date),
-							keyB = new Date(b.date);
-						// Compare the 2 dates
-						if (keyA < keyB) return -1;
-						if (keyA > keyB) return 1;
-						return 0;
-					});
+						// sort array by date
+						tweets.sort(function (a, b) {
+							var keyA = new Date(a.date),
+								keyB = new Date(b.date);
+							// Compare the 2 dates
+							if (keyA < keyB) return -1;
+							if (keyA > keyB) return 1;
+							return 0;
+						});
 
-					// limit array size to total count
-					tweets = tweets.slice(0, settings.totalCount);
+						// limit array size to total count
+						tweets = tweets.slice(0, settings.totalCount);
 
-					showTweets(tweets);
-				}
-			});
+						showTweets(tweets);
+					}
+				});
+			}
+		};
 
+
+		loadTweets();
+		if (settings.reload !== -1) {
+			setInterval(loadTweets, settings.reload);
 		}
 	};
 
