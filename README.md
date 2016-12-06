@@ -85,6 +85,7 @@ For now only two templating variables are available, more coming soon. You add a
 
 Template | Description
 --- | ---
+`{{id}}` | Tweet ID
 `{{tweet}}` | Tweet content
 `{{date}}` | Formatted tweet date
 `{{avatar}}` | User's Avatar Image
