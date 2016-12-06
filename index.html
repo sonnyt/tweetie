@@ -106,7 +106,7 @@
                -moz-border-radius: 3px;
                     border-radius: 3px;
         }
-    
+
         .example2 .tweet {
             overflow: hidden;
         }
@@ -137,7 +137,7 @@
     <script class="source" type="text/javascript">
         $('.example1 .tweet').twittie({
             dateFormat: '%b. %d, %Y',
-            template: '{{tweet}} <div class="date">{{date}}</div>',
+            template: '{{tweet}} <div class="date">{{date}}</div> <a class="reply-link" href="https://twitter.com/intent/tweet?in_reply_to={{id}}">reply</a>',
             count: 1,
             loadingText: 'Loading!'
         });
