@@ -80,7 +80,7 @@
          */
         var templating = function (data) {
             var temp = settings.template;
-            var temp_variables = ['date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name', 'user_name'];
+            var temp_variables = ['id', 'date', 'tweet', 'avatar', 'url', 'retweeted', 'screen_name', 'user_name'];
 
             for (var i = 0, len = temp_variables.length; i < len; i++) {
                 temp = temp.replace(new RegExp('{{' + temp_variables[i] + '}}', 'gi'), data[temp_variables[i]]);
@@ -110,6 +110,7 @@
                     }
 
                     var temp_data = {
+                        id: tweet.id,
                         user_name: tweet.user.name,
                         date: dating(tweet.created_at),
                         tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
