@@ -112,7 +112,7 @@
                     var temp_data = {
                         user_name: tweet.user.name,
                         date: dating(tweet.created_at),
-                        tweet: (tweet.retweeted) ? linking('RT @'+ tweet.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
+                        tweet: (tweet.retweeted) ? linking('RT @'+ tweet.retweeted_status.user.screen_name +': '+ tweet.retweeted_status.text) : linking(tweet.text),
                         avatar: '<img src="'+ tweet.user.profile_image_url +'" />',
                         url: 'https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str,
                         retweeted: tweet.retweeted,
