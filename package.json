@@ -1,0 +1,24 @@
+{
+  "name": "tweetie",
+  "version": "3.0.0",
+  "description": "Simple Twitter Feed Plugin that works with new Twitter 1.1 API.",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "watch": "./node_modules/.bin/webpack --config webpack.config.js --progress --watch"
+  },
+  "keywords": [
+    "jquery",
+    "twitter",
+    "tweet",
+    "feed",
+    "api"
+  ],
+  "author": "Sonny T.",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-env": "^1.2.1",
+    "webpack": "^2.2.1"
+  }
+}
