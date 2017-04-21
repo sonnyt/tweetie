@@ -20,6 +20,8 @@ import render from './utils/template';
     }).done((response) => {
       const { template, dateFormat } = settings;
 
+      this.empty();
+
       response.forEach((data) => {
         const tweet = render(data, template, dateFormat);
         this.append(tweet);
@@ -28,7 +30,10 @@ import render from './utils/template';
       if (typeof callback === 'function') callback();
     }).fail((e) => {
       const { errors } = e.responseJSON;
-      errors.forEach((err) => $.error(err.message));
+      
+      if (errors) {
+        errors.forEach((err) => $.error(err.message));
+      }
     });
   };
 }(jQuery));

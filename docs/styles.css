@@ -1,0 +1,114 @@
+html, body, #container {
+  height: 100%;
+}
+
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: #4c4f4f;
+  font: normal normal 16px/1.6 "Source Sans Pro", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.controls, .preview, .export {
+  padding: 20px;
+  float: left;
+  height: 100%;
+  overflow: auto;
+}
+
+.controls {
+  color: #34495e;
+  background-color: #f4f5f8;
+  width: 20%;
+}
+
+.controls h4 {
+  border-bottom: 1px solid #eee;
+  margin: 0 0 15px;
+  padding-bottom: 5px;
+}
+
+.controls label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.controls .form {
+  margin-bottom: 15px;
+}
+
+.controls button {
+  cursor: pointer;
+  float: right;
+  margin-top: -56px;
+  background: #008cba;
+  color: white;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 3px;
+}
+
+.controls button:hover {
+  opacity: .8;
+}
+
+.controls button:focus {
+  outline: none;
+}
+
+.controls select,
+.controls textarea,
+.controls input[type="number"],
+.controls input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #eee;
+}
+
+.controls input[type="checkbox"] {
+  top: -5px;
+}
+
+.preview {
+  overflow: auto;
+  width: 50%;
+}
+
+.export {
+  color: white;
+  background-color: #35424E;
+  width: 30%;
+  font-size: 13px;
+}
+
+.export xmp {
+  margin: 0;
+  padding: 25px 10px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, .2);
+  overflow: auto;
+}
+
+h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+  margin: 0 0 25px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 25px 0;
+}
