@@ -19,6 +19,7 @@
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
     "babel-preset-env": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.2.1"
   }
 }
