@@ -33,6 +33,8 @@ import render from './utils/template';
       
       if (errors) {
         errors.forEach((err) => $.error(err.message));
+
+        if (typeof callback === 'function') callback(errors);
       }
     });
   };
