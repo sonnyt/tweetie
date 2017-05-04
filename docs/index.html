@@ -54,6 +54,7 @@
           <option value="timeline">Timeline</option>
           <option value="list">List</option>
           <option value="hashtag">Hashtag</option>
+          <option value="search">Search</option>
         </select>
       </div>
 
@@ -86,6 +87,13 @@
         <div class="form">
           <label for="slug">Slug</label>
           <input type="text" name="slug" id="slug" v-model.lazy="options.params.slug" />
+        </div>
+      </div>
+
+      <div v-if="options.type === 'search'">
+        <div class="form">
+          <label for="q">Search Term</label>
+          <input type="text" name="q" id="q" v-model.lazy="options.params.q" />
         </div>
       </div>
 

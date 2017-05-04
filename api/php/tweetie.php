@@ -23,6 +23,7 @@ class Tweetie {
       case 'list':
         return '/lists/statuses';
 
+      case 'search':
       case 'hashtag':
         return '/search/tweets';
 
@@ -59,7 +60,7 @@ class Tweetie {
 
     http_response_code($this->connection->http_code);
 
-    return json_encode($response);
+    return json_encode( isset($response->statuses) ? $response->statuses : $response );
   }
 
   private function get_cache()
@@ -70,7 +71,7 @@ class Tweetie {
       }
     }
 
-    if(file_exists($this->cache_path . $this->cache_key)) {
+    if (file_exists($this->cache_path . $this->cache_key)) {
       return file_get_contents($this->cache_path . $this->cache_key);
     }
   }
