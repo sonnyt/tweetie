@@ -4,7 +4,8 @@
   "description": "Simple Twitter Feed Plugin that works with new Twitter 1.1 API.",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack.config.js",
-    "watch": "./node_modules/.bin/webpack --config webpack.config.js --progress --watch"
+    "watch": "./node_modules/.bin/webpack --config webpack.config.js --progress --watch",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --recursive"
   },
   "keywords": [
     "jquery",
@@ -18,8 +19,16 @@
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.2.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.2.1"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }

@@ -11,7 +11,7 @@ import render from './utils/template';
       params: {},
 
       template: '{{tweet.created_at}} - {{tweet.text}}',
-      dateFormat: '%b/%d/%Y'
+      dateFormat: '%m/%d/%Y'
     }, options);
 
     $.get(settings.apiPath, {

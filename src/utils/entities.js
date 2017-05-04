@@ -12,11 +12,11 @@ function hashtags(text, entity) {
 }
 
 export default function(text, entities) {
-  if (entities.urls.length) {
+  if (entities.urls && entities.urls.length) {
     entities.urls.forEach((entity) => text = urls(text, entity));
   }
 
-  if (entities.hashtags.length) {
+  if (entities.hashtags && entities.hashtags.length) {
     entities.hashtags.forEach((entity) => text = hashtags(text, entity));
   }
 
