@@ -7,7 +7,7 @@ jQuery Tweetie - Simple Twitter Feed Plugin that works with new Twitter API.
 
 Download the lastest version of [jQuery Tweetie](https://github.com/sonnyt/tweetie/releases/latest).
 
-In order to successfully use jQuery Tweetie, you have to have server-side/backend API. We provide very simple PHP code that you can easily setup and get going.
+In order to successfully use jQuery Tweetie, you have to have server-side/backend API. The plugin comes with very simple PHP backend that you can easily setup and get going.
 
 # Use
 Initlize just like any other plugin.
@@ -35,7 +35,7 @@ Tweetie uses the exact same options as the Twitter API.
 
 ## Templating
 
-Tweetie uses curly brace templating syntax. You can access any tweet propery using the `{{}}` double curly brase. Every link, @username and #hashtag is automatically hyper-linked.
+Tweetie uses curly brace templating syntax. You can access any tweet property using the `{{}}` double curly brase. For your convinece every `hyper-link`, `@username` and `#hashtag` in tweet body is automatically hyper-linked.
 
 **Example**
 
