@@ -14,7 +14,7 @@ function getProperty(obj = {}, key = '') {
 }
 
 export default function(tweet, template, dateFormat) {
-  tweet.text = template.replace(/{{tweet\.(\w+)}}/gi, (variable, key) => {
+  tweet.text = template.replace(/{{tweet\.(.*?)}}/gi, (variable, key) => {
     let value = getProperty(tweet, key);
 
     if (date.isDate(key)) {

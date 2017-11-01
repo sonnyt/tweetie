@@ -67,7 +67,7 @@
           $('#tweetie').tweetie(this.options);
         },
         watch: {
-          options: function(options) {
+          options: function() {
             $('#tweetie').tweetie(this.options);
           }
         }
