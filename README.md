@@ -10,7 +10,7 @@ Download the lastest version of [jQuery Tweetie](https://github.com/sonnyt/tweet
 In order to successfully use jQuery Tweetie, you have to have server-side/backend API. The plugin comes with very simple PHP backend that you can easily setup and get going.
 
 # Use
-Initlize just like any other plugin.
+Initialize just like any other plugin.
 
 ```js
 $('.tweets').tweetie();
@@ -35,10 +35,10 @@ Tweetie uses the exact same options as the Twitter API.
 
 ## Templating
 
-Tweetie uses curly brace templating syntax. You can access any tweet property using the `{{}}` double curly brase. For your convinece every `hyper-link`, `@username` and `#hashtag` in tweet body is automatically hyper-linked.
+Tweetie uses curly brace templating syntax. You can access any tweet properties using the `{{}}` double curly brase. For your convinece every `link`, `@username` and `#hashtag` in the tweet body is automatically hyper-linked.
 
 **Example**
 
 ```handlebars
-{{text}} tweeted by {{user.screen_name}}
+{{tweet.text}} tweeted by {{tweet.user.screen_name}} at {{tweet.created_at}}
 ```
