@@ -22,9 +22,9 @@ Property | Type | Description
 --- | --- | ---
 url | String | ***Required.*** API URL.
 type | String | ***Required.*** Fetch tweets via hashtags, search terms, username and lists. Available options [timeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline), [list](https://dev.twitter.com/rest/reference/get/lists/statuses), [search](https://dev.twitter.com/rest/reference/get/search/tweets) and [hashtag](https://dev.twitter.com/rest/reference/get/search/tweets).
-template | String | ***Required.*** Template for each individual tweet. Learn more here.
+template | String | ***Required.*** Template for each individual tweet. Learn more [here](#templating).
 params | Object | ***Required.*** Parameters required to fetch collection of relevant tweets matching a specified query.  Only [timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline), [list](https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-statuses) and [search/hashtag](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline.html) params are accepted.
-dateFormat | String | Formating for `created_at` attribute. Learn more here.
+dateFormat | String | Formating for `created_at` attribute. Learn more [here](#date-format).
 
 ## Templating
 
