@@ -16,26 +16,31 @@ Initialize just like any other plugin.
 $('.tweets').tweetie();
 ```
 
-## Fetching Tweets
+# Settings
 
-With Tweetie you can easily fetch tweets via hashtags, search terms, username and lists.
-
-- `timeline` fetch user tweets.
-- `list` fetch tweets from specific list.
-- `search` search for tweets by keyword.
-- `hashtag` fetch tweets by hashtag.
-
-## Options
-
-Tweetie uses the exact same options as the Twitter API.
-
-- [Timeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline)
-- [List](https://dev.twitter.com/rest/reference/get/lists/statuses)
-- [Search/Hashtag](https://dev.twitter.com/rest/reference/get/search/tweets)
+Property | Type | Description
+--- | --- | ---
+url | String | ***Required.*** API URL.
+type | String | ***Required.*** Fetch tweets via hashtags, search terms, username and lists. Available options [timeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline), [list](https://dev.twitter.com/rest/reference/get/lists/statuses), [search](https://dev.twitter.com/rest/reference/get/search/tweets) and [hashtag](https://dev.twitter.com/rest/reference/get/search/tweets).
+template | String | ***Required.*** Template for each individual tweet. Learn more here.
+params | Object | ***Required.*** Parameters required to fetch collection of relevant tweets matching a specified query.  Only [timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline), [list](https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-statuses) and [search/hashtag](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline.html) params are accepted.
+dateFormat | String | Formating for `created_at` attribute. Learn more here.
 
 ## Templating
 
 Tweetie uses curly brace templating syntax. You can access any tweet properties using the `{{}}` double curly brase. For your convinece every `link`, `@username` and `#hashtag` in the tweet body is automatically hyper-linked.
+
+## Date Format
+Format | Description
+--- | ---
+`%d` | Date, 1,2,3...
+`%m` | Month number 1,2,3...
+`%b` | Abbreviated month Jan, Feb, Mar...
+`%B` | Full month January, February, March...
+`%y` | Last two digits of year, 11,12,13...
+`%Y` | Full year 2011, 2012, 2013...
+
+Date format automatically applies to `created_at` template attribute.
 
 **Example**
 
