@@ -42,7 +42,7 @@ Format | Example | Description
 `%d` | `1..31` | Day of month
 `%m` | `1..12` |	Month number
 `%B` | `January..December` | Month name
-`%b` | `Jan..Dec`| Month name abbriviated
+`%b` | `Jan..Dec`| Month name abbreviated
 `%Y` | `2018` | 4 digit year
 `%y` | `18` | 2 digit year
 
