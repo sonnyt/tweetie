@@ -37,13 +37,13 @@ Tweetie uses curly brace templating syntax. You can access any tweet properties 
 ```
 
 ## Date Format
-Format | Description
---- | ---
-`%d` | Date, 1,2,3...
-`%m` | Month number 1,2,3...
-`%b` | Abbreviated month Jan, Feb, Mar...
-`%B` | Full month January, February, March...
-`%y` | Last two digits of year, 11,12,13...
-`%Y` | Full year 2011, 2012, 2013...
+Format | Example | Description
+--- | --- | ---
+`%d` | `1..31` | Day of month
+`%m` | `1..12` |	Month number
+`%B` | `January..December` | Month name
+`%b` | `Jan..Dec`| Month name abbriviated
+`%Y` | `2018` | 4 digit year
+`%y` | `18` | 2 digit year
 
 Date format automatically applies to `created_at` template attribute.
