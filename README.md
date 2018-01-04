@@ -30,6 +30,12 @@ dateFormat | String | Formating for `created_at` attribute. Learn more here.
 
 Tweetie uses curly brace templating syntax. You can access any tweet properties using the `{{}}` double curly brase. For your convinece every `link`, `@username` and `#hashtag` in the tweet body is automatically hyper-linked.
 
+**Example**
+
+```handlebars
+{{tweet.text}} tweeted by {{tweet.user.screen_name}} at {{tweet.created_at}}
+```
+
 ## Date Format
 Format | Description
 --- | ---
@@ -41,9 +47,3 @@ Format | Description
 `%Y` | Full year 2011, 2012, 2013...
 
 Date format automatically applies to `created_at` template attribute.
-
-**Example**
-
-```handlebars
-{{tweet.text}} tweeted by {{tweet.user.screen_name}} at {{tweet.created_at}}
-```
