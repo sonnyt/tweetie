@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import entities from '../../src/utils/entities';
 
-describe('date utility', () => {
+describe('entities utility', () => {
   it('renders a user',() => {
     assert.equal(entities('Hi @first', {}), 'Hi <a href="https://twitter.com/first" target="_blank">@first</a>');
     assert.equal(entities('Hi @first, @second', {}), 'Hi <a href="https://twitter.com/first" target="_blank">@first</a>, <a href="https://twitter.com/second" target="_blank">@second</a>');
