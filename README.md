@@ -13,7 +13,7 @@ jQuery Tweetie - Simple Twitter Feed Plugin that works with new Twitter 1.1 API.
 
 [Demo](http://sonnyt.com/Tweetie)
 
-#Usage
+# Usage
 New Twitter API requires oAuth Token Key, so it's three step process.
 
 ## Step 1
@@ -42,7 +42,7 @@ Initlize just like any other plugin.
 $('.tweet').twittie();
 ```
 
-#Options
+# Options
 
 Option | Default | Description
 --- | --- | ---
