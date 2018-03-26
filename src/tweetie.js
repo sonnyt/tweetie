@@ -29,12 +29,17 @@ import render from './utils/template';
 
       if (typeof callback === 'function') callback();
     }).fail((e) => {
-      const { errors } = e.responseJSON;
+      if (e.responseJSON) {
+        const { errors } = e.responseJSON;
       
-      if (errors) {
-        errors.forEach((err) => $.error(err.message));
-
-        if (typeof callback === 'function') callback(errors);
+        if (errors) {
+          errors.forEach((err) => $.error(err.message));
+  
+          if (typeof callback === 'function') callback(errors);
+        }
+      } else {
+        $.error(e);
+        if (typeof callback === 'function') callback(e);
       }
     });
   };

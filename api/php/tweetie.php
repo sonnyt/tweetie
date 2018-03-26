@@ -2,6 +2,7 @@
 /**
  * Tweetie API
  */
+
 require_once('config.php');
 require_once('twitteroauth/twitteroauth.php');
 
@@ -32,28 +33,27 @@ class Tweetie {
     }
   }
 
-  public function get($type = 'timeline', $params = [])
+  public function fetch($type = 'timeline', $params = [])
   {
-    header('Content-Type: application/json');
-
     $this->cache_key = md5(var_export($params, true) . md5(dirname(__FILE__)));
+    $tweets = array();
 
     if (CACHE_ENABLED) {
       $tweets = $this->get_cache();
     }
 
     if (!$tweets) {
-      $tweets = $this->fetch($type, $params);
+      $tweets = $this->request($type, $params);
+
+      if (CACHE_ENABLED) {
+        $this->set_cache($tweets);
+      }
     }
 
-    if (CACHE_ENABLED) {
-      $this->set_cache($tweets);
-    }
-
-    exit($tweets);
+    return $tweets;
   }
 
-  public function fetch($type, $params = [])
+  public function request($type, $params = [])
   {
     $url = $this->url_path($type);
     $response = $this->connection->get($url, $params);
@@ -81,6 +81,3 @@ class Tweetie {
     file_put_contents($this->cache_path . $this->cache_key, $tweets);
   }
 }
-
-$api = new Tweetie();
-$api->get($_GET['type'], $_GET['params']);

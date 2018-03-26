@@ -1,0 +1,22 @@
+{
+  "name": "tweetie",
+  "version": "3.0.0",
+  "description": "Simple Node.js API for jQuery Tweetie",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "jquery",
+    "twitter",
+    "tweet",
+    "feed",
+    "api"
+  ],
+  "author": "Sonny T.",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "qs": "^6.5.1",
+    "twitter": "^1.7.1"
+  }
+}
