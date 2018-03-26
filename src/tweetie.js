@@ -5,7 +5,7 @@ import render from './utils/template';
 
   $.fn.tweetie = function(options, callback) {
     const settings = Object.assign({
-      apiPath: 'api/tweet.php',
+      url: 'api/tweet.php',
 
       type: 'timeline',
       params: {},
@@ -14,7 +14,7 @@ import render from './utils/template';
       dateFormat: '%m/%d/%Y'
     }, options);
 
-    $.get(settings.apiPath, {
+    $.get(settings.url, {
       type: settings.type,
       params: settings.params
     }).done((response) => {
