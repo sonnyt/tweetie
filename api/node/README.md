@@ -5,4 +5,4 @@ Simple Node.js API for jQuery Tweetie.
 
 # Config
 
-Edit the `config.php` file and replace the variables with your Twitter Authentication Keys.
+Edit the `config.js` file and replace the variables with your Twitter Authentication Keys.
