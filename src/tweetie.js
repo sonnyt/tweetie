@@ -27,20 +27,10 @@ import render from './utils/template';
         this.append(tweet);
       });
 
-      if (typeof callback === 'function') callback();
-    }).fail((e) => {
-      if (e.responseJSON) {
-        const { errors } = e.responseJSON;
-      
-        if (errors) {
-          errors.forEach((err) => $.error(err.message));
-  
-          if (typeof callback === 'function') callback(errors);
-        }
-      } else {
-        $.error(e);
-        if (typeof callback === 'function') callback(e);
-      }
+      if (typeof callback === 'function') callback(null, response);
+    }).fail((err) => {
+      $.error(err);
+      if (typeof callback === 'function') callback(err);
     });
   };
 }(jQuery));
