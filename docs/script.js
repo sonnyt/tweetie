@@ -19,7 +19,7 @@
     el: '#container',
     data: {
       options: {
-        url: 'https://files.sonnyt.com/tweetie/v3/',
+        url: 'https://tweetie.now.sh/api/',
         type: 'timeline',
         template: '<li>{{tweet.created_at}} - {{tweet.text}}</li>',
         dateFormat: '%b %d, %Y',
